@@ -1,50 +1,83 @@
 import styled from "styled-components";
 import React from 'react';
+import { Link } from "react-scroll";
+import { AiOutlineMessage } from "react-icons/ai";
+
+
 
 const Wrapper = styled.div`
-  height: 50px;
+  height: 5rem;
+  width: 100vw;
+  margin: 0 auto;
+  padding: 1rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin: 5px 0;
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  /* background-color: aqua; */
 `;
 
 const Button = styled.button`
-  width: 200px;
-  height: 40px;
-  border-radius: 20px;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 2rem;
   background-color: white;
-  border-color: white;
-  font-size: 24px;
+  border: none;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
 `;
 
 const Menu = styled.ul`
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 5px;
 `;
 
 const Item = styled.li`
-  width: 60px;
+  margin: 1rem;
   text-align: center;
   cursor: pointer;
+
+  &:hover {
+    color: yellow;
+    padding-bottom: 0.5rem;
+    border-bottom: solid 3px yellow;
+  }
 `;
 
-const Logo = styled.img``;
+const Logo = styled.img`
+  height: 3rem;
+  width: 4rem;
+  object-fit: cover;
+`;
 
 function NavBar() {
   return (
     <Wrapper>
-      <Logo src="" alt="Z" />
+      <Logo src="https://i.ibb.co/482VxGz/o.png"/>
       <Menu>
-        <Item>item 1</Item>
-        <Item>item 1</Item>
-        <Item>item 1</Item>
-        <Item>item 1</Item>
-        <Item>item 1</Item>
+        <Item>
+          <Link to="home" smooth duration={500} >Home</Link>
+        </Item>
+        <Item>
+          <Link to="about" smooth duration={500} >About</Link>
+        </Item>
+        <Item>
+          <Link to="portfolio" smooth duration={500} >Portfolio</Link>
+        </Item>
+        <Item>
+          <Link to="clints" smooth duration={500} >Client</Link>
+        </Item>
       </Menu>
-      <Button>button</Button>
+      <Button>
+       <AiOutlineMessage />
+        Contact me
+      </Button>
     </Wrapper>
   )
 }
