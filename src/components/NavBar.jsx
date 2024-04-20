@@ -2,6 +2,7 @@ import styled from "styled-components";
 import React from 'react';
 import { Link } from "react-scroll";
 import { AiOutlineMessage } from "react-icons/ai";
+import {mobile, tablet} from "../responsive";
 
 
 
@@ -17,11 +18,12 @@ const Wrapper = styled.div`
   top: 0;
   z-index: 3;
   /* background-color: aqua; */
+
 `;
 
 const Button = styled.button`
   width: 10rem;
-  height: 3rem;
+  height: 85%;
   border-radius: 2rem;
   background-color: white;
   border: none;
@@ -51,7 +53,6 @@ const Item = styled.li`
 `;
 
 const Logo = styled.img`
-  height: 3rem;
   width: 4rem;
   object-fit: cover;
 `;
@@ -59,7 +60,7 @@ const Logo = styled.img`
 function NavBar() {
   return (
     <Wrapper>
-      <Logo src="https://i.ibb.co/482VxGz/o.png"/>
+      <Logo src="https://i.ibb.co/dLDXf06/o.png" alt="logo"/>
       <Menu>
         <Item>
           <Link to="home" smooth duration={500} >Home</Link>
@@ -71,7 +72,7 @@ function NavBar() {
           <Link to="portfolio" smooth duration={500} >Portfolio</Link>
         </Item>
         <Item>
-          <Link to="clints" smooth duration={500} >Client</Link>
+          <Link to="clients" smooth duration={500} >Client</Link>
         </Item>
       </Menu>
       <Button>
