@@ -70,7 +70,7 @@ const Buttonspan = styled.span`
 
 const IntroImg = styled.img`
   /* width: 30vw; */
-  height: 100vh;
+  height: calc(95vh - 5rem);
   width: 45vw;
   object-fit: cover;
   z-index: -1;

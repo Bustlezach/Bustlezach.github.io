@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React from 'react';
 import { Link } from "react-scroll";
 import { AiOutlineMessage } from "react-icons/ai";
-import {mobile, tablet} from "../responsive";
+// import {mobile, tablet} from "../responsive";
 
 
 
@@ -17,8 +17,7 @@ const Wrapper = styled.div`
   position: sticky;
   top: 0;
   z-index: 3;
-  /* background-color: aqua; */
-
+  background-color: #252323;
 `;
 
 const Button = styled.button`
