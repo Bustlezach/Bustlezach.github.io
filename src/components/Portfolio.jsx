@@ -90,13 +90,13 @@ const TileFooter = styled.p`
 `;
 
 const SeeMore = styled.a`
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   font-size: 1.5rem;
   color: black;
   text-align: center;
   background-color: white;
   border: solid 3px wheat;
-  border-radius: 10px;
+  border-radius: 50px;
 `;
 
 

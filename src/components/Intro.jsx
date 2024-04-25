@@ -114,7 +114,7 @@ function Intro() {
         </Button>
       </IntroContent>
      <IntroImg
-      src='https://i.ibb.co/hFJ3h79/ali-morshedlou-WMD64t-Mfc4k-unsplash.jpg' 
+      src='https://i.ibb.co/sjCMHW0/falling-rain.jpg' 
       alt='self_img'
     />
     </Wrapper>

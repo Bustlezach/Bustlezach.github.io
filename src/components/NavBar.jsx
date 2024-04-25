@@ -71,13 +71,15 @@ function NavBar() {
           <Link to="portfolio" smooth duration={500} >Portfolio</Link>
         </Item>
         <Item>
-          <Link to="clients" smooth duration={500} >Client</Link>
+          <Link to="#" smooth duration={500} >Clients</Link>
         </Item>
       </Menu>
-      <Button>
-       <AiOutlineMessage />
-        Contact me
-      </Button>
+      <Link to="contactme" smooth duration={500}>
+        <Button>
+          <AiOutlineMessage />
+          Contact me
+        </Button>
+      </Link>
     </Wrapper>
   )
 }
