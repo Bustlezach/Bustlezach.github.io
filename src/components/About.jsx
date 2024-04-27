@@ -8,9 +8,10 @@ import { CgWebsite } from "react-icons/cg";
 
 
 const Wrapper = styled.div`
+  min-height: calc(100vh - 10rem);
   width: 85vw;
-  margin: 0 auto;
   padding-top: 5rem;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;

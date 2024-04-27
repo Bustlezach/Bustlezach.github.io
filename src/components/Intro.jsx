@@ -9,7 +9,7 @@ import { mobile, tablet } from "../responsive";
 const Wrapper = styled.div`
   width: 85vw;
   margin: 0 auto;
-  height: calc(100vh - 5rem);;
+  min-height: calc(100vh - 5rem);;
   display: flex;
   align-items: center;
   justify-content: space-between;

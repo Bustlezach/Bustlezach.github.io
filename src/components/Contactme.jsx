@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import {mobile, tablet} from '../responsive';
 import { FaLinkedin } from "react-icons/fa";
@@ -39,11 +39,12 @@ const Desc = styled.p`
 `;
 
 const Form = styled.form`
+  min-height: 70vh;
   margin: 1rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  justify-content: space-evenly;
 `;
 
 const Input = styled.input`
@@ -82,6 +83,7 @@ const Button = styled.button`
 
 const SocialMediaDiv = styled.div`
   margin-top: 0.5rem;
+  min-height: 10vh;
   margin-bottom: 2rem;
   min-width: 20vw;
   display: flex;
@@ -103,6 +105,27 @@ const SocialMedia = styled.a`
 
 
 function Contactme() {
+
+  const [ name, setName ] = useState('');
+  const [ email, setEmail ] = useState('');
+  const [ message, setMessage ] = useState('');
+
+  const nameHandleChange = (event) => {
+    const {value} = event.target;
+    setName((prev) => value);
+  };
+  const emailHandleChange = (event) => {
+    const {value} = event.target;
+    setEmail((prev) => value);
+  };
+  const messageHandleChange = (event) => {
+    const {value} = event.target;
+    setMessage((prev) => value);
+  };
+
+  // const handleSubmit = (event) => {};
+
+
   return (
     <Wrapper id='contactme'>
       <Header>Contact Me</Header>
@@ -110,9 +133,30 @@ function Contactme() {
         Please fill out the form below to discuss any work opportunities.
       </Desc>
       <Form method='get' action='mailto:bustlezach01@gmail.com' encType='text/plain'>
-        <Input placeholder='Your name' name='name'/>
-        <Input placeholder='Your Email' name='email' />
-        <Textarea placeholder='Your Message' rows={10}/>
+        <Input
+         placeholder='Your name'
+         type='text' 
+         name='name' 
+         onChange={nameHandleChange} 
+         value={name}
+         required
+        />
+        <Input
+         placeholder='Your Email'
+         type='email'
+         email='email' 
+         onChange={emailHandleChange} 
+         value={email}
+         required
+        />
+        <Textarea
+         placeholder='Your Message' 
+         type='text'
+         rows={10} message='message' 
+         onChange={messageHandleChange} 
+         value={message}
+         required
+        />
         <Button type='submit'>Submit</Button>
       </Form>
       <SocialMediaDiv>
