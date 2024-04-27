@@ -35,18 +35,6 @@ const Wrapper = styled.div`
   })}
 `;
 
-// const Button = styled.button`
-//   width: 10rem;
-//   height: 85%;
-//   border-radius: 2rem;
-//   background-color: white;
-//   border: none;
-//   font-size: 18px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   padding: 0 1rem;
-// `;
 
 const Menu = styled.nav`
   display: flex;
@@ -232,19 +220,6 @@ function NavBar() {
           </Link>
         </Item>
       </Menu>
-      {/* <Link
-       onClick={handleClick} 
-       activeClass="active"  
-       to="contactme" 
-       smooth 
-       duration={500} 
-       spy
-      >
-        <Button>
-          <AiOutlineMessage />
-          Contact me
-        </Button>
-      </Link> */}
     </Wrapper>
   )
 }
