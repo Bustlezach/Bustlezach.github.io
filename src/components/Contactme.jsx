@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import styled from 'styled-components';
 import {mobile, tablet} from '../responsive';
 import { FaLinkedin } from "react-icons/fa";
@@ -6,6 +7,106 @@ import { FaXTwitter } from "react-icons/fa6";
 import { CiYoutube } from "react-icons/ci";
 
 
+
+
+function Contactme() {
+
+  const [ user_name, setUserName ] = useState('');
+  const [ user_email, setUserEmail ] = useState('');
+  const [ message, setMessage ] = useState('');
+
+  const nameHandleChange = (event) => {
+    const {value} = event.target;
+    setUserName((prev) => value);
+  };
+  const emailHandleChange = (event) => {
+    const {value} = event.target;
+    setUserEmail((prev) => value);
+  };
+  const messageHandleChange = (event) => {
+    const {value} = event.target;
+    setMessage((prev) => value);
+  };
+
+  
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        process.env.REACT_APP_YOUR_SERVICE_ID, 
+        process.env.REACT_APP_YOUR_TEMPLATE_ID, 
+        form.current, 
+        {
+          publicKey: process.env.REACT_APP_YOUR_PUBLIC_KEY,
+        }
+      )
+      .then(
+        () => {
+          alert("Message has been sent!");
+          console.log('SUCCESS!');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+      setUserName('');
+      setUserEmail('');
+      setMessage('');
+  };
+
+
+  return (
+    <Wrapper id='contactme'>
+      <Header>Contact Me</Header>
+      <Desc>
+        Please fill out the form below to discuss any work opportunities.
+      </Desc>
+      <Form ref={form} onSubmit={sendEmail} >
+        <Input
+         placeholder='Your name'
+         type='text' 
+         name='user_name' 
+         onChange={nameHandleChange} 
+         value={user_name}
+         required
+        />
+        <Input
+         placeholder='Your Email'
+         type='email'
+         name='user_email' 
+         onChange={emailHandleChange} 
+         value={user_email}
+         required
+        />
+        <Textarea
+         placeholder='Your Message' 
+         type='text'
+         rows={10} name='message' 
+         onChange={messageHandleChange} 
+         value={message}
+         required
+        />
+        <Button type='submit'>Submit</Button>
+      </Form>
+      <SocialMediaDiv>
+        <SocialMedia href='https://www.linkedin.com/in/oluwaseunolorunshola/' target='_blank' >
+          <FaLinkedin color='white'/>
+        </SocialMedia>
+        <SocialMedia href='https://youtube.com/@oluwaseunolorunshola3978?si=ZAm06Eh_IV8sqeX4' target='_blank' >
+        <CiYoutube color='red'/>
+        </SocialMedia>
+        <SocialMedia href='https://x.com/bustlezach?t=NlryY1jpv47lR5bfFNFwBg&s=08' target='_blank' >
+          <FaXTwitter color='white'/>
+        </SocialMedia >
+      </SocialMediaDiv>
+    </Wrapper>
+  )
+}
+
+export default Contactme
 
 
 const Wrapper = styled.div`
@@ -49,19 +150,33 @@ const Form = styled.form`
 
 const Input = styled.input`
   color: white;
-  width: 65vw;
+  width: 35vw;
   height: 2rem;
   padding: 0 0.5rem;
   background-color: #2e2d2b;
   border: none;
+
+  ${mobile({
+    width: "60vw"
+  })}
+  ${tablet({
+    width: "60vw"
+  })}
 `;
 
 const Textarea = styled.textarea`
-  width: 65vw;
+  width: 35vw;
   padding: 0.5rem;
   background-color: #2e2d2b;
   border: none;
   color: white;
+
+  ${mobile({
+    width: "60vw"
+  })}
+  ${tablet({
+    width: "60vw"
+  })}
 `;
 
 const Button = styled.button`
@@ -101,77 +216,3 @@ const SocialMedia = styled.a`
   })}
 `;
 
-
-
-
-function Contactme() {
-
-  const [ name, setName ] = useState('');
-  const [ email, setEmail ] = useState('');
-  const [ message, setMessage ] = useState('');
-
-  const nameHandleChange = (event) => {
-    const {value} = event.target;
-    setName((prev) => value);
-  };
-  const emailHandleChange = (event) => {
-    const {value} = event.target;
-    setEmail((prev) => value);
-  };
-  const messageHandleChange = (event) => {
-    const {value} = event.target;
-    setMessage((prev) => value);
-  };
-
-  // const handleSubmit = (event) => {};
-
-
-  return (
-    <Wrapper id='contactme'>
-      <Header>Contact Me</Header>
-      <Desc>
-        Please fill out the form below to discuss any work opportunities.
-      </Desc>
-      <Form method='get' action='mailto:bustlezach01@gmail.com' encType='text/plain'>
-        <Input
-         placeholder='Your name'
-         type='text' 
-         name='name' 
-         onChange={nameHandleChange} 
-         value={name}
-         required
-        />
-        <Input
-         placeholder='Your Email'
-         type='email'
-         email='email' 
-         onChange={emailHandleChange} 
-         value={email}
-         required
-        />
-        <Textarea
-         placeholder='Your Message' 
-         type='text'
-         rows={10} message='message' 
-         onChange={messageHandleChange} 
-         value={message}
-         required
-        />
-        <Button type='submit'>Submit</Button>
-      </Form>
-      <SocialMediaDiv>
-        <SocialMedia href='https://www.linkedin.com/in/oluwaseunolorunshola/' target='_blank' >
-          <FaLinkedin color='white'/>
-        </SocialMedia>
-        <SocialMedia href='https://youtube.com/@oluwaseunolorunshola3978?si=ZAm06Eh_IV8sqeX4' target='_blank' >
-        <CiYoutube color='red'/>
-        </SocialMedia>
-        <SocialMedia href='https://x.com/bustlezach?t=NlryY1jpv47lR5bfFNFwBg&s=08' target='_blank' >
-          <FaXTwitter color='white'/>
-        </SocialMedia >
-      </SocialMediaDiv>
-    </Wrapper>
-  )
-}
-
-export default Contactme
