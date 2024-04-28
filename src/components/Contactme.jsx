@@ -188,6 +188,7 @@ const Button = styled.button`
   font-size: 1rem;
   border: solid 1px white;
   border-radius: 10px;
+  cursor: pointer;
 
   ${tablet({
     margin: "0.5rem",

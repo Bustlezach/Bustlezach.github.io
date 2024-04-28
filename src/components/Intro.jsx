@@ -6,6 +6,47 @@ import { mobile, tablet } from "../responsive";
 
 
 
+
+
+function Intro() {
+  return (
+    <Wrapper id='home'>
+      <IntroContent>
+        <Greetings>Hello,</Greetings>
+        <Title>
+          I'm <Name> Oluwaseun</Name> <br></br>
+          Website Designer
+        </Title>
+        <Introduction>
+          I am a skilled and passionate web designer with experience in
+          creating visually appealing and user-friendly websites.
+        </Introduction>
+        <BtnContainer>
+          <Button>
+            <FaSuitcase />
+            <Link to='about' smooth>
+              <Buttonspan>Hire me</Buttonspan>
+            </Link>
+          </Button>
+          <BtnResume>
+            <Anchor href='#'>
+              <Buttonspan>Resume</Buttonspan>
+            </Anchor>
+          </BtnResume>
+        </BtnContainer>
+      </IntroContent>
+     <IntroImg
+      src='https://i.ibb.co/sjCMHW0/falling-rain.jpg' 
+      alt='self_img'
+    />
+    </Wrapper>
+  )
+}
+
+export default Intro;
+
+
+
 const Wrapper = styled.div`
   width: 85vw;
   margin: 0 auto;
@@ -50,7 +91,13 @@ const Name = styled.span`
 const Introduction = styled.p`
   font-size: 0.8rem;
   letter-spacing: 0.08rem;
-`
+`;
+
+const BtnContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+`;
 
 const Button = styled.button`
   background-color: white;
@@ -64,8 +111,48 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+const BtnResume = styled.button`
+  background-color: white;
+  padding: 0.6rem 0.8rem;
+  margin: 0.5rem 0;
+  width: 7rem;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 2rem;
+    background-color: yellow;
+    z-index: -1;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: .5s ease-in-out;
+    border: none;
+  }
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
+
+`;
+
 const Buttonspan = styled.span`
   font-size: 0.8rem;
+`;
+
+const Anchor = styled.a`
+  text-decoration: none;
+  color: black;
 `;
 
 const IntroImg = styled.img`
@@ -91,34 +178,3 @@ ${tablet({
     opacity: '0.5'
   })}
 `;
-
-
-function Intro() {
-  return (
-    <Wrapper id='home'>
-      <IntroContent>
-        <Greetings>Hello,</Greetings>
-        <Title>
-          I'm <Name> Oluwaseun</Name> <br></br>
-          Website Designer
-        </Title>
-        <Introduction>
-          I am a skilled and passionate web designer with experience in
-          creating visually appealing and user-friendly websites.
-        </Introduction>
-        <Button>
-          <FaSuitcase />
-          <Link to='about' smooth>
-            <Buttonspan>Hire me</Buttonspan>
-          </Link>
-        </Button>
-      </IntroContent>
-     <IntroImg
-      src='https://i.ibb.co/sjCMHW0/falling-rain.jpg' 
-      alt='self_img'
-    />
-    </Wrapper>
-  )
-}
-
-export default Intro

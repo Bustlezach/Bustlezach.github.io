@@ -16,6 +16,7 @@ body {
   color: white;
   overflow: hidden;
   overflow-y: scroll;
+  content-visibility: auto;
 }
 
 code {
