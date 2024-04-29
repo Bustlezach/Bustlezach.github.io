@@ -2,10 +2,9 @@ import React, { lazy, Suspense } from "react";
 import NavBar from "./components/NavBar";
 import Intro from "./components/Intro";
 import About from "./components/About";
-import Contactme from "./components/Contactme";
 import Footer from "./components/Footer";
 const LazyPortfolio = lazy(() => import("./components/Portfolio"))
-const LazyContactme = lazy(() => import("./components/Portfolio"))
+const LazyContactme = lazy(() => import("./components/Contactme"))
 
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
         <LazyContactme />
       </Suspense>
       {/* <Clients /> */}
-      <Contactme />
       <Footer />
     </div>
   );
