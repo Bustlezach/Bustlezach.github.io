@@ -2,6 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import {mobile, tablet } from "../responsive";
 
+
+
+function Footer() {
+  const date = new Date();
+  const currentYear = date.getFullYear();
+
+  return (
+    <Wrapper>
+      Copyright &#169; {currentYear} Bustlezach. All right reserved.
+    </Wrapper>
+  )
+}
+
+export default Footer;
+
 const Wrapper = styled.footer`
   background-color: #252323;
   color: white;
@@ -22,17 +37,3 @@ const Wrapper = styled.footer`
     fontSize: "0.8rem",
   })}
 `;
-
-
-function Footer() {
-  const date = new Date();
-  const currentYear = date.getFullYear();
-
-  return (
-    <Wrapper>
-      Copyright &#169; {currentYear} Bustlezach. All right reserved.
-    </Wrapper>
-  )
-}
-
-export default Footer

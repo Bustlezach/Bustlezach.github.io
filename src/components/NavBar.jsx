@@ -9,6 +9,97 @@ import {mobile, tablet} from "../responsive";
 
 
 
+
+function NavBar() {
+
+  const [showHamburger, setShowHamburger] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+
+  const handleClick = () => {
+    setShowHamburger(prev => !prev);
+    setShowMenu(prev => !prev);
+  };
+
+  const icon = showHamburger ? <IoCloseOutline /> : <RxHamburgerMenu /> ;
+
+  useEffect(() => {
+    const handleClick = () => {
+      setShowHamburger((prev) => !prev);
+      setShowMenu((prev) => !prev);
+    };
+
+    document.addEventListener("mouseup", handleClick);
+    return () => document.removeEventListener("mouseup", handleClick);
+  }, []);
+
+  return (
+    <Wrapper>
+      <Logo src="https://i.ibb.co/dLDXf06/o.png" alt="logo"/>
+      <Icon onClick={handleClick}  >{icon}</Icon>
+      <Menu showMenu={showMenu}>
+        <Item>
+          <Link
+           activeClass="active"  
+            to="home" 
+            smooth 
+            duration={500} 
+            spy
+          >
+              Home
+          </Link>
+        </Item>
+        <Item>
+          <Link
+           activeClass="active"  
+           to="about" 
+           smooth 
+           duration={500} 
+           spy
+          >
+            About
+          </Link>
+        </Item>
+        <Item>
+          <Link
+           activeClass="active"  
+           to="portfolio" 
+           smooth 
+           duration={500} 
+           spy
+          >
+            Portfolio
+          </Link>
+        </Item>
+        <Item>
+          <Link
+           activeClass="active"  
+           to="#" 
+           smooth 
+           duration={500} 
+           spy
+          >
+            Clients
+          </Link>
+        </Item>
+        <Item>
+          <Link
+           activeClass="active"  
+           to="contactme" 
+           smooth 
+           duration={500} 
+           spy
+          >
+            <AiOutlineMessage />
+            Contact me
+          </Link>
+        </Item>
+      </Menu>
+    </Wrapper>
+  )
+}
+
+export default NavBar;
+
 const Wrapper = styled.div`
   height: 5rem;
   width: 100vw;
@@ -135,93 +226,3 @@ const Icon = styled.div`
   })}
 
 `;
-
-function NavBar() {
-
-  const [showHamburger, setShowHamburger] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
-
-  const handleClick = () => {
-    setShowHamburger(prev => !prev);
-    setShowMenu(prev => !prev);
-  };
-
-  const icon = showHamburger ? <IoCloseOutline /> : <RxHamburgerMenu /> ;
-
-  useEffect(() => {
-    const handleClick = () => {
-      setShowHamburger((prev) => !prev);
-      setShowMenu((prev) => !prev);
-    };
-
-    document.addEventListener("mouseup", handleClick);
-    return () => document.removeEventListener("mouseup", handleClick);
-  }, []);
-
-  return (
-    <Wrapper>
-      <Logo src="https://i.ibb.co/dLDXf06/o.png" alt="logo"/>
-      <Icon onClick={handleClick}  >{icon}</Icon>
-      <Menu showMenu={showMenu}>
-        <Item>
-          <Link
-           activeClass="active"  
-            to="home" 
-            smooth 
-            duration={500} 
-            spy
-          >
-              Home
-          </Link>
-        </Item>
-        <Item>
-          <Link
-           activeClass="active"  
-           to="about" 
-           smooth 
-           duration={500} 
-           spy
-          >
-            About
-          </Link>
-        </Item>
-        <Item>
-          <Link
-           activeClass="active"  
-           to="portfolio" 
-           smooth 
-           duration={500} 
-           spy
-          >
-            Portfolio
-          </Link>
-        </Item>
-        <Item>
-          <Link
-           activeClass="active"  
-           to="#" 
-           smooth 
-           duration={500} 
-           spy
-          >
-            Clients
-          </Link>
-        </Item>
-        <Item>
-          <Link
-           activeClass="active"  
-           to="contactme" 
-           smooth 
-           duration={500} 
-           spy
-          >
-            <AiOutlineMessage />
-            Contact me
-          </Link>
-        </Item>
-      </Menu>
-    </Wrapper>
-  )
-}
-
-export default NavBar;

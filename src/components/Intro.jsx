@@ -29,7 +29,7 @@ function Intro() {
             </Link>
           </Button>
           <BtnResume>
-            <Anchor href='#'>
+            <Anchor href='https://drive.google.com/file/d/1hbAxhuoMZPvovfGgQhimhRmPopceeTH5/view?usp=sharing'>
               <Buttonspan>Resume</Buttonspan>
             </Anchor>
           </BtnResume>

@@ -7,6 +7,56 @@ import { CgWebsite } from "react-icons/cg";
 
 
 
+function About() {
+  return (
+    <Wrapper id='about'>
+      <Heading>What i do</Heading>
+      <History>
+        {/* I am a skilled and passionate web designer with experience in creating 
+        vitually appealing and user-friendly websites. I have a strong understanding of
+        design and a keen eye for details. I am proficient in HTML, CSS, JsvaScript and React Js,
+        as well as design software such as Abode Photoshop. */}
+        I'm a software engineer specializing in front-end development. My passion lies in creating unforgettable user experiences that resonate on a deeper level. I'm all about blending functionality with flair, crafting apps that are both fashionable and timeless. <br /><br />
+With a keen eye for design and a love for pushing the boundaries of what's possible, I bring a unique perspective to every project. From sleek interfaces to seamless interactions, I strive to create experiences that not only meet user needs but also leave a lasting impression. Let's collaborate and turn your ideas into something truly remarkable.
+
+      </History>
+      <Section>
+        <Tile>
+          <Icon>
+            <SiAntdesign />
+          </Icon>
+          <InnerWrapper>
+            <AppTitle>UI/UX design</AppTitle>
+            <AppDesc>I leverage the power of design thinking to craft user interfaces (UI) that are intuitive and user experiences (UX) that are delightful. I ensure a smooth flow throughout the user journey, making interactions effortless and enjoyable.</AppDesc>
+          </InnerWrapper>
+        </Tile>
+        <Tile>
+          <Icon>
+            <CgWebsite />
+          </Icon>
+          <InnerWrapper>
+            <AppTitle>Website design</AppTitle>
+            <AppDesc>I transform ideas into visually stunning and functionally sound websites. I prioritize user experience (UX) and search engine optimization (SEO) to create websites that not only look great but also drive results.</AppDesc>
+          </InnerWrapper>
+        </Tile>
+        <Tile>
+          <Icon>
+            <MdAppRegistration />
+          </Icon>
+          <InnerWrapper>
+            <AppTitle>App design</AppTitle>
+            <AppDesc>I translate complex functionalities into beautifully designed and intuitive mobile applications. I prioritize user experience (UX) to ensure a seamless and enjoyable interaction for your users.</AppDesc>
+          </InnerWrapper>
+        </Tile>
+      </Section>
+    </Wrapper>
+  )
+}
+
+export default About;
+
+
+
 const Wrapper = styled.div`
   min-height: calc(100vh - 10rem);
   width: 85vw;
@@ -68,51 +118,3 @@ const AppDesc = styled.div`
   padding-top: 0.5rem;
   font-size: 0.8rem;
 `;
-
-function About() {
-  return (
-    <Wrapper id='about'>
-      <Heading>What i do</Heading>
-      <History>
-        {/* I am a skilled and passionate web designer with experience in creating 
-        vitually appealing and user-friendly websites. I have a strong understanding of
-        design and a keen eye for details. I am proficient in HTML, CSS, JsvaScript and React Js,
-        as well as design software such as Abode Photoshop. */}
-        I'm a software engineer specializing in front-end development. My passion lies in creating unforgettable user experiences that resonate on a deeper level. I'm all about blending functionality with flair, crafting apps that are both fashionable and timeless. <br /><br />
-With a keen eye for design and a love for pushing the boundaries of what's possible, I bring a unique perspective to every project. From sleek interfaces to seamless interactions, I strive to create experiences that not only meet user needs but also leave a lasting impression. Let's collaborate and turn your ideas into something truly remarkable.
-
-      </History>
-      <Section>
-        <Tile>
-          <Icon>
-            <SiAntdesign />
-          </Icon>
-          <InnerWrapper>
-            <AppTitle>UI/UX design</AppTitle>
-            <AppDesc>I leverage the power of design thinking to craft user interfaces (UI) that are intuitive and user experiences (UX) that are delightful. I ensure a smooth flow throughout the user journey, making interactions effortless and enjoyable.</AppDesc>
-          </InnerWrapper>
-        </Tile>
-        <Tile>
-          <Icon>
-            <CgWebsite />
-          </Icon>
-          <InnerWrapper>
-            <AppTitle>Website design</AppTitle>
-            <AppDesc>I transform ideas into visually stunning and functionally sound websites. I prioritize user experience (UX) and search engine optimization (SEO) to create websites that not only look great but also drive results.</AppDesc>
-          </InnerWrapper>
-        </Tile>
-        <Tile>
-          <Icon>
-            <MdAppRegistration />
-          </Icon>
-          <InnerWrapper>
-            <AppTitle>App design</AppTitle>
-            <AppDesc>I translate complex functionalities into beautifully designed and intuitive mobile applications. I prioritize user experience (UX) to ensure a seamless and enjoyable interaction for your users.</AppDesc>
-          </InnerWrapper>
-        </Tile>
-      </Section>
-    </Wrapper>
-  )
-}
-
-export default About
