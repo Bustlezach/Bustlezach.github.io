@@ -24,13 +24,14 @@ function NavBar() {
 
   useEffect(() => {
     const handleClick = () => {
-      setShowHamburger((prev) => !prev);
-      setShowMenu((prev) => !prev);
+      if (showMenu) {
+        setShowHamburger((prev) => !prev);
+        setShowMenu((prev) => !prev);
+      }
     };
-
-    document.addEventListener("mouseup", handleClick);
+    document.addEventListener("mouseup", handleClick); 
     return () => document.removeEventListener("mouseup", handleClick);
-  }, []);
+  }, [showMenu]);
 
   return (
     <Wrapper>
