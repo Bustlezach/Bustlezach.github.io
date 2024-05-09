@@ -35,7 +35,7 @@ function NavBar() {
 
   return (
     <Wrapper>
-      <Logo src="https://i.ibb.co/dLDXf06/o.png" alt="logo"/>
+      <Logo src="https://i.ibb.co/FHhWCkb/nlogo.png" alt="logo"/>
       <Icon onClick={handleClick}  >{icon}</Icon>
       <Menu showMenu={showMenu}>
         <Item>
