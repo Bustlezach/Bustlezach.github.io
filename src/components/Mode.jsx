@@ -13,7 +13,7 @@ function Mode() {
   return (
     <Container>
       <Part>
-        <Desc color={mode}>Night</Desc>
+        <Desc color={mode}>Dark</Desc>
         <svg
           class="w-[38px] h-[38px] text-gray-800 dark:text-white"
           aria-hidden="true"
@@ -54,7 +54,7 @@ function Mode() {
           />
         </svg>
 
-        <Desc color={mode}>Day</Desc>
+        <Desc color={mode}>Light</Desc>
       </Part>
     </Container>
   );
@@ -77,7 +77,7 @@ const Desc = styled.span`
   font-weight: 700;
   padding: 0 0.2rem;
   margin: 0 0.2rem;
-  color: ${props => props.color === 'night' ? "white" : "black"};
+  color: ${(props) => (props.color === "night" ? "white" : "black")};
 `;
 
 const Part = styled.div`
