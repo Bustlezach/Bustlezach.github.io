@@ -1,118 +1,91 @@
-import styled from "styled-components";
-import React, { useEffect, useState } from 'react';
+import styled, { StyleSheetManager } from "styled-components";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-scroll";
 import { AiOutlineMessage } from "react-icons/ai";
 import "./active.css";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoCloseOutline } from "react-icons/io5";
-import {mobile, tablet} from "../responsive";
-
-
-
+import { mobile, tablet } from "../responsive";
+import { MyContext } from "../context/MyContext";
 
 function NavBar() {
-
+  const { mode } = useContext(MyContext);
   const [showHamburger, setShowHamburger] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
+  const [showmenu, setShowmenu] = useState(false);
 
   const handleClick = () => {
-    setShowHamburger(prev => !prev);
-    setShowMenu(prev => !prev);
+    setShowHamburger((prev) => !prev);
+    setShowmenu((prev) => !prev);
   };
 
-  const icon = showHamburger ? <IoCloseOutline /> : <RxHamburgerMenu /> ;
+  const icon = showHamburger ? <IoCloseOutline /> : <RxHamburgerMenu />;
 
   useEffect(() => {
     const handleClick = () => {
-      if (showMenu) {
+      if (showmenu) {
         setShowHamburger((prev) => !prev);
-        setShowMenu((prev) => !prev);
+        setShowmenu((prev) => !prev);
       }
     };
-    document.addEventListener("mouseup", handleClick); 
+    document.addEventListener("mouseup", handleClick);
     return () => document.removeEventListener("mouseup", handleClick);
-  }, [showMenu]);
+  }, [showmenu]);
 
   return (
-    <Wrapper>
-      <Logo src="https://i.ibb.co/FHhWCkb/nlogo.png" alt="logo"/>
-      <Icon onClick={handleClick}  >{icon}</Icon>
-      <Menu showMenu={showMenu}>
-        <Item>
-          <Link
-           activeClass="active"  
-            to="home" 
-            smooth 
-            duration={500} 
-            spy
-          >
+    <StyleSheetManager enableVendorPrefixes>
+      <Wrapper bgColor={mode}>
+        <Logo src="https://i.ibb.co/FHhWCkb/nlogo.png" alt="logo" />
+        <Icon onClick={handleClick}>{icon}</Icon>
+        <Menu showmenu={showmenu}>
+          <Item>
+            <Link activeClass="active" to="home" smooth duration={500} spy>
               Home
-          </Link>
-        </Item>
-        <Item>
-          <Link
-           activeClass="active"  
-           to="about" 
-           smooth 
-           duration={500} 
-           spy
-          >
-            About
-          </Link>
-        </Item>
-        <Item>
-          <Link
-           activeClass="active"  
-           to="portfolio" 
-           smooth 
-           duration={500} 
-           spy
-          >
-            Portfolio
-          </Link>
-        </Item>
-        <Item>
-          <Link
-           activeClass="active"  
-           to="#" 
-           smooth 
-           duration={500} 
-           spy
-          >
-            Clients
-          </Link>
-        </Item>
-        <Item>
-          <Link
-           activeClass="active"  
-           to="contactme" 
-           smooth 
-           duration={500} 
-           spy
-          >
-            <AiOutlineMessage />
-            Contact me
-          </Link>
-        </Item>
-      </Menu>
-    </Wrapper>
-  )
+            </Link>
+          </Item>
+          <Item>
+            <Link activeClass="active" to="about" smooth duration={500} spy>
+              About
+            </Link>
+          </Item>
+          <Item>
+            <Link activeClass="active" to="portfolio" smooth duration={500} spy>
+              Portfolio
+            </Link>
+          </Item>
+          <Item>
+            <Link activeClass="active" to="#" smooth duration={500} spy>
+              Clients
+            </Link>
+          </Item>
+          <Item>
+            <Link activeClass="active" to="contactme" smooth duration={500} spy>
+              <AiOutlineMessage />
+              Contact me
+            </Link>
+          </Item>
+        </Menu>
+      </Wrapper>
+    </StyleSheetManager>
+  );
 }
 
 export default NavBar;
 
+const black = `#252323`;
+const white = `#ece7e7`;
 const Wrapper = styled.div`
   height: 5rem;
   width: 100vw;
   margin: 0 auto;
   padding: 1rem 5rem;
+  color: ${(props) => (props.bgColor === "night" ? "white" : "black")};
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 3;
-  background-color: #252323;
+  background-color: ${(props) => (props.bgColor === "night" ? black : white)};
 
   ${mobile({
     flexDirection: "column",
@@ -126,7 +99,6 @@ const Wrapper = styled.div`
     position: "relative",
   })}
 `;
-
 
 const Menu = styled.nav`
   display: flex;
@@ -140,7 +112,7 @@ const Menu = styled.nav`
     backgroundColor: "RGB(0, 0, 0, 0.5)",
     width: "40vw",
     position: "absolute",
-    display: props => (props.showMenu ? "flex" : "none"),
+    display: (props) => (props.showmenu ? "flex" : "none"),
   })}
 
   ${tablet({
@@ -150,7 +122,7 @@ const Menu = styled.nav`
     backgroundColor: "RGB(0, 0, 0, 0.5)",
     width: "40vw",
     position: "absolute",
-    display: props => (props.showMenu ? "flex" : "none"),
+    display: (props) => (props.showmenu ? "flex" : "none"),
   })}
 `;
 
@@ -159,7 +131,7 @@ const Item = styled.div`
   text-align: center;
   cursor: pointer;
 
-  &:last-child{
+  &:last-child {
     font-size: 1.1rem;
     padding: 0.8rem 1.2rem;
     color: #000;
@@ -167,7 +139,7 @@ const Item = styled.div`
     border-radius: 2rem;
     font-weight: 500;
 
-    &:hover{
+    &:hover {
       background-color: #a18c15;
       color: white;
     }
@@ -193,7 +165,6 @@ const Item = styled.div`
     width: "100%",
     margin: "0.5rem",
   })}
-
 `;
 
 const Logo = styled.img`
@@ -201,11 +172,11 @@ const Logo = styled.img`
   object-fit: cover;
 
   ${mobile({
-    width: "3rem"
+    width: "3rem",
   })}
 
   ${tablet({
-    width: "3rem"
+    width: "3rem",
   })}
 `;
 
@@ -225,5 +196,4 @@ const Icon = styled.div`
   ${tablet({
     display: "block",
   })}
-
 `;

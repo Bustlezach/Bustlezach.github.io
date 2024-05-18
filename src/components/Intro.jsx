@@ -1,96 +1,97 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useContext } from "react";
+import styled from "styled-components";
 import { FaSuitcase } from "react-icons/fa6";
 import { Link } from "react-scroll";
 import { mobile, tablet } from "../responsive";
-
-
-
-
+import { MyContext } from "../context/MyContext";
 
 function Intro() {
+  const { mode } = useContext(MyContext);
   return (
-    <Wrapper id='home'>
+    <Wrapper id="home">
       <IntroContent>
-        <Greetings>Hello,</Greetings>
-        <Title>
+        <Greetings color={mode}>Hello,</Greetings>
+        <Title color={mode}>
           I'm <Name> Oluwaseun</Name> <br></br>
           Website Designer
         </Title>
-        <Introduction>
-          I am a skilled and passionate web designer with experience in
-          creating visually appealing and user-friendly websites.
+        <Introduction color={mode}>
+          I am a skilled and passionate web designer with experience in creating
+          visually appealing and user-friendly websites.
         </Introduction>
         <BtnContainer>
           <Button>
             <FaSuitcase />
-            <Link to='about' smooth>
+            <Link to="about" smooth>
               <Buttonspan>Hire me</Buttonspan>
             </Link>
           </Button>
           <BtnResume>
-            <Anchor href='https://drive.google.com/file/d/1hbAxhuoMZPvovfGgQhimhRmPopceeTH5/view?usp=sharing'>
+            <Anchor href="https://drive.google.com/file/d/1hbAxhuoMZPvovfGgQhimhRmPopceeTH5/view?usp=sharing">
               <Buttonspan>Resume</Buttonspan>
             </Anchor>
           </BtnResume>
         </BtnContainer>
       </IntroContent>
-     <IntroImg
-      src='https://i.ibb.co/sjCMHW0/falling-rain.jpg' 
-      alt='self_img'
-    />
+      <IntroImg
+        src="https://i.ibb.co/sjCMHW0/falling-rain.jpg"
+        alt="self_img"
+      />
     </Wrapper>
-  )
+  );
 }
 
 export default Intro;
 
-
-
 const Wrapper = styled.div`
   width: 85vw;
   margin: 0 auto;
-  min-height: calc(100vh - 5rem);;
+  min-height: calc(100vh - 5rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   ${mobile({
-    position: 'relative',
-    alignItems: 'center',
+    position: "relative",
+    alignItems: "center",
   })}
-  
+
   ${tablet({
-    position: 'relative',
-    alignItems: 'center',
+    position: "relative",
+    alignItems: "center",
   })}
 `;
 
 const IntroContent = styled.div`
   z-index: 2;
-  
+
   ${mobile({
-    padding: '0 1rem',
-    justifyContent: 'center'
+    padding: "0 1rem",
+    justifyContent: "center",
   })}
 
-${tablet({
-    padding: '0 1rem',
-    justifyContent: 'center'
+  ${tablet({
+    padding: "0 1rem",
+    justifyContent: "center",
   })}
 `;
 
-const Greetings = styled.p``;
+const Greetings = styled.p`
+  color: ${(props) => (props.color === "night" ? "white" : "black")};
+`;
 
-const Title = styled.h1``;
+const Title = styled.h1`
+  color: ${(props) => (props.color === "night" ? "white" : "black")};
+`;
 
 const Name = styled.span`
   color: yellow;
-`
+`;
 
 const Introduction = styled.p`
   font-size: 0.8rem;
   letter-spacing: 0.08rem;
+  color: ${(props) => (props.color === "night" ? "white" : "black")};
 `;
 
 const BtnContainer = styled.div`
@@ -125,7 +126,7 @@ const BtnResume = styled.button`
   z-index: 0;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -136,14 +137,13 @@ const BtnResume = styled.button`
     z-index: -1;
     transform-origin: left;
     transform: scaleX(0);
-    transition: .5s ease-in-out;
+    transition: 0.5s ease-in-out;
     border: none;
   }
 
   &:hover::before {
     transform: scaleX(1);
   }
-
 `;
 
 const Buttonspan = styled.span`
@@ -161,20 +161,20 @@ const IntroImg = styled.img`
   width: 45vw;
   object-fit: cover;
   z-index: -1;
-  
+
   ${mobile({
-    width: '100%',
-    position: 'absolute',
-    top: '0',
-    right: '0',
-    opacity: '0.5'
+    width: "100%",
+    position: "absolute",
+    top: "0",
+    right: "0",
+    opacity: "0.5",
   })}
 
-${tablet({
-    width: '100%',
-    position: 'absolute',
-    top: '0',
-    right: '0',
-    opacity: '0.5'
+  ${tablet({
+    width: "100%",
+    position: "absolute",
+    top: "0",
+    right: "0",
+    opacity: "0.5",
   })}
 `;

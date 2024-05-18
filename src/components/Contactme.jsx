@@ -1,34 +1,31 @@
-import React, { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
-import styled from 'styled-components';
-import {mobile, tablet} from '../responsive';
+import React, { useContext, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import styled from "styled-components";
+import { mobile, tablet } from "../responsive";
 import { FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { CiYoutube } from "react-icons/ci";
-
-
-
+import { MyContext } from "../context/MyContext";
 
 function Contactme() {
-
-  const [ user_name, setUserName ] = useState('');
-  const [ user_email, setUserEmail ] = useState('');
-  const [ message, setMessage ] = useState('');
+  const [user_name, setUserName] = useState("");
+  const [user_email, setUserEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const { mode } = useContext(MyContext);
 
   const nameHandleChange = (event) => {
-    const {value} = event.target;
+    const { value } = event.target;
     setUserName((prev) => value);
   };
   const emailHandleChange = (event) => {
-    const {value} = event.target;
+    const { value } = event.target;
     setUserEmail((prev) => value);
   };
   const messageHandleChange = (event) => {
-    const {value} = event.target;
+    const { value } = event.target;
     setMessage((prev) => value);
   };
 
-  
   const form = useRef();
 
   const sendEmail = (e) => {
@@ -36,9 +33,9 @@ function Contactme() {
 
     emailjs
       .sendForm(
-        process.env.REACT_APP_YOUR_SERVICE_ID, 
-        process.env.REACT_APP_YOUR_TEMPLATE_ID, 
-        form.current, 
+        process.env.REACT_APP_YOUR_SERVICE_ID,
+        process.env.REACT_APP_YOUR_TEMPLATE_ID,
+        form.current,
         {
           publicKey: process.env.REACT_APP_YOUR_PUBLIC_KEY,
         }
@@ -46,68 +43,86 @@ function Contactme() {
       .then(
         () => {
           alert("Message has been sent!");
-          console.log('SUCCESS!');
+          console.log("SUCCESS!");
         },
         (error) => {
-          console.log('FAILED...', error.text);
-        },
+          console.log("FAILED...", error.text);
+        }
       );
-      setUserName('');
-      setUserEmail('');
-      setMessage('');
+    setUserName("");
+    setUserEmail("");
+    setMessage("");
   };
 
+  const socialMediaColor = function (val) {
+    if (mode === "night") {
+      return "white";
+    } else {
+      return val;
+    }
+  };
 
   return (
-    <Wrapper id='contactme'>
+    <Wrapper color={mode} id="contactme">
       <Header>Contact Me</Header>
       <Desc>
         Please fill out the form below to discuss any work opportunities.
       </Desc>
-      <Form ref={form} onSubmit={sendEmail} >
+      <Form ref={form} onSubmit={sendEmail}>
         <Input
-         placeholder='Your name'
-         type='text' 
-         name='user_name' 
-         onChange={nameHandleChange} 
-         value={user_name}
-         required
+          placeholder="Your name"
+          type="text"
+          name="user_name"
+          onChange={nameHandleChange}
+          value={user_name}
+          required
         />
         <Input
-         placeholder='Your Email'
-         type='email'
-         name='user_email' 
-         onChange={emailHandleChange} 
-         value={user_email}
-         required
+          placeholder="Your Email"
+          type="email"
+          name="user_email"
+          onChange={emailHandleChange}
+          value={user_email}
+          required
         />
         <Textarea
-         placeholder='Your Message' 
-         type='text'
-         rows={10} name='message' 
-         onChange={messageHandleChange} 
-         value={message}
-         required
+          placeholder="Your Message"
+          type="text"
+          rows={10}
+          name="message"
+          onChange={messageHandleChange}
+          value={message}
+          required
         />
-        <Button type='submit'>Submit</Button>
+        <Button color={mode} type="submit">
+          Submit
+        </Button>
       </Form>
       <SocialMediaDiv>
-        <SocialMedia href='https://www.linkedin.com/in/oluwaseunolorunshola/' target='_blank' >
-          <FaLinkedin color='white'/>
+        <SocialMedia
+          href="https://www.linkedin.com/in/oluwaseunolorunshola/"
+          target="_blank"
+        >
+          <FaLinkedin color={socialMediaColor("blue")} />
         </SocialMedia>
-        <SocialMedia href='https://youtube.com/@oluwaseunolorunshola3978?si=ZAm06Eh_IV8sqeX4' target='_blank' >
-        <CiYoutube color='red'/>
+        <SocialMedia
+          href="https://youtube.com/@oluwaseunolorunshola3978?si=ZAm06Eh_IV8sqeX4"
+          target="_blank"
+        >
+          <CiYoutube color="red" />
         </SocialMedia>
-        <SocialMedia href='https://x.com/bustlezach?t=NlryY1jpv47lR5bfFNFwBg&s=08' target='_blank' >
-          <FaXTwitter color='white'/>
-        </SocialMedia >
+        <SocialMedia
+          href="https://x.com/bustlezach?t=NlryY1jpv47lR5bfFNFwBg&s=08"
+          target="_blank"
+        >
+          <FaXTwitter color={socialMediaColor("black")} />
+        </SocialMedia>
       </SocialMediaDiv>
     </Wrapper>
-  )
+  );
 }
 
-export default Contactme
-
+export default Contactme;
 
 const Wrapper = styled.div`
   min-height: calc(100vh - 5rem);
@@ -118,14 +133,13 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  
-
+  color: ${(props) => (props.color === "night" ? "white" : "black")};
 `;
 
 const Header = styled.h1`
   ${mobile({
     fontWeight: "500",
-    fontSize: "26px"
+    fontSize: "26px",
   })}
 `;
 
@@ -149,41 +163,44 @@ const Form = styled.form`
 `;
 
 const Input = styled.input`
-  color: white;
+  color: ${(props) => (props.color === "night" ? "white" : "black")};
   width: 35vw;
   height: 2rem;
   padding: 0 0.5rem;
-  background-color: #2e2d2b;
+  background-color: ${(props) =>
+    props.color === "night" ? "#2e2d2b" : "#f8f3f3"};
   border: none;
 
   ${mobile({
-    width: "60vw"
+    width: "60vw",
   })}
   ${tablet({
-    width: "60vw"
+    width: "60vw",
   })}
 `;
 
 const Textarea = styled.textarea`
   width: 35vw;
   padding: 0.5rem;
-  background-color: #2e2d2b;
+  background-color: ${(props) =>
+    props.color === "night" ? "#2e2d2b" : "#f8f3f3"};
   border: none;
-  color: white;
+  color: ${(props) => (props.color === "night" ? "white" : "black")};
 
   ${mobile({
-    width: "60vw"
+    width: "60vw",
   })}
   ${tablet({
-    width: "60vw"
+    width: "60vw",
   })}
 `;
 
 const Button = styled.button`
   margin: 2rem;
   padding: 0.5rem 2.5rem;
-  color: black;
-  background-color: white;
+  color: ${(props) => (props.color === "night" ? "black" : "white")};
+  background-color: ${(props) =>
+    props.color === "night" ? "white" : "#383535"};
   text-align: center;
   font-size: 1rem;
   border: solid 1px white;
@@ -194,7 +211,6 @@ const Button = styled.button`
     margin: "0.5rem",
     padding: "0.3rem 1.5rem",
   })}
-
 `;
 
 const SocialMediaDiv = styled.div`
@@ -205,7 +221,6 @@ const SocialMediaDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-
 `;
 
 const SocialMedia = styled.a`
@@ -216,4 +231,3 @@ const SocialMedia = styled.a`
     fontSize: "1.5rem",
   })}
 `;
-
