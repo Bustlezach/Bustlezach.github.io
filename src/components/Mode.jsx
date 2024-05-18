@@ -54,7 +54,7 @@ function Mode() {
           />
         </svg>
 
-        <Desc>Day</Desc>
+        <Desc color={mode}>Day</Desc>
       </Part>
     </Container>
   );
