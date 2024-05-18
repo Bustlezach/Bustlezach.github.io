@@ -89,13 +89,13 @@ const Wrapper = styled.div`
 
   ${mobile({
     flexDirection: "column",
-    minHeight: "13vh",
+    minHeight: "10vh",
     position: "relative",
   })}
 
   ${tablet({
     flexDirection: "column",
-    minHeight: "13vh",
+    minHeight: "10vh",
     position: "relative",
   })}
 `;
