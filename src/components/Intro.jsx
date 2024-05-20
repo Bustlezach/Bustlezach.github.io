@@ -85,7 +85,7 @@ const Title = styled.h1`
 `;
 
 const Name = styled.span`
-  color: yellow;
+  color: #d4a300;
 `;
 
 const Introduction = styled.p`

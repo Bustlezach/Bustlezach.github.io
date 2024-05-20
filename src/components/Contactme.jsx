@@ -168,7 +168,7 @@ const Input = styled.input`
   height: 2rem;
   padding: 0 0.5rem;
   background-color: ${(props) =>
-    props.color === "night" ? "#2e2d2b" : "#f8f3f3"};
+    props.color === "night" ? "#2e2d2b" : "#edf4f7"};
   border: none;
 
   ${mobile({
@@ -183,7 +183,7 @@ const Textarea = styled.textarea`
   width: 35vw;
   padding: 0.5rem;
   background-color: ${(props) =>
-    props.color === "night" ? "#2e2d2b" : "#f8f3f3"};
+    props.color === "night" ? "#2e2d2b" : "#edf4f7"};
   border: none;
   color: ${(props) => (props.color === "night" ? "white" : "black")};
 
@@ -200,7 +200,7 @@ const Button = styled.button`
   padding: 0.5rem 2.5rem;
   color: ${(props) => (props.color === "night" ? "black" : "white")};
   background-color: ${(props) =>
-    props.color === "night" ? "white" : "#383535"};
+    props.color === "night" ? "white" : "#274858"};
   text-align: center;
   font-size: 1rem;
   border: solid 1px white;

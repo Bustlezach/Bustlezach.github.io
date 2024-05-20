@@ -16,16 +16,15 @@ function App() {
 
   const GlobalStyle = createGlobalStyle`
     body {
-      background-color: ${(props) =>
-        props.bgColor === "night" ? black : white};
+      background-color: ${(props) => (props.color === "night" ? black : white)};
     }
   `;
 
   return (
     <div className="App">
-      <GlobalStyle bgColor={mode} />
-      <Mode />
+      <GlobalStyle color={mode} />
       <NavBar />
+      <Mode />
       <Intro />
       <About />
       <Suspense fallback={<div>Loading...</div>}>

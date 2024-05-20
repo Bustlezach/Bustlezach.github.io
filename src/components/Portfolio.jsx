@@ -165,7 +165,7 @@ const Tile = styled.div`
   min-width: 150px;
   border-radius: 1rem;
   background-color: ${(props) =>
-    props.color === "night" ? "#2e2d2b" : "#f8f3f3"};
+    props.color === "night" ? "#2e2d2b" : "#edf4f7"};
 `;
 
 const TopSection = styled.div`

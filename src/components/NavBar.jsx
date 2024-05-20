@@ -33,7 +33,7 @@ function NavBar() {
 
   return (
     <StyleSheetManager enableVendorPrefixes>
-      <Wrapper bgColor={mode}>
+      <Wrapper color={mode}>
         <Logo src="https://i.ibb.co/FHhWCkb/nlogo.png" alt="logo" />
         <Icon onClick={handleClick}>{icon}</Icon>
         <Menu showmenu={showmenu}>
@@ -74,29 +74,31 @@ export default NavBar;
 const black = `#252323`;
 const white = `#ece7e7`;
 const Wrapper = styled.div`
+  position: sticky;
+  top: 0;
   height: 5rem;
   width: 100vw;
   margin: 0 auto;
   padding: 1rem 5rem;
-  color: ${(props) => (props.bgColor === "night" ? "white" : "black")};
+  color: ${white};
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 3;
-  background-color: ${(props) => (props.bgColor === "night" ? black : white)};
+  z-index: 1000;
+  background-color: ${(props) => (props.color === "night" ? black : "#828588")};
 
   ${mobile({
     flexDirection: "column",
     minHeight: "10vh",
-    position: "relative",
+    // position: "relative",
+    color: white
   })}
 
   ${tablet({
     flexDirection: "column",
     minHeight: "10vh",
-    position: "relative",
+    // position: "relative",
+    color: white
   })}
 `;
 
@@ -133,14 +135,14 @@ const Item = styled.div`
 
   &:last-child {
     font-size: 1.1rem;
-    padding: 0.8rem 1.2rem;
+    padding: 0.5rem;
     color: #000;
     background-color: white;
     border-radius: 2rem;
     font-weight: 500;
 
     &:hover {
-      background-color: #a18c15;
+      background-color: #d4a300;
       color: white;
     }
 
@@ -151,7 +153,7 @@ const Item = styled.div`
   }
 
   &:hover {
-    color: yellow;
+    color: #d4a300;
     padding-bottom: 0.5rem;
     border-bottom: solid 3px yellow;
   }

@@ -113,7 +113,7 @@ const Tile = styled.div`
   align-items: center;
   justify-content: flex-start;
   background-color: ${(props) =>
-    props.color === "night" ? "#2e2d2b" : "#f8f3f3"};
+    props.color === "night" ? "#2e2d2b" : "#edf4f7"};
   padding: 1rem;
   margin: 1rem 0;
   border-radius: 0.5rem;
