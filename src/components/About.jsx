@@ -5,12 +5,14 @@ import { SiAntdesign } from "react-icons/si";
 import { MdAppRegistration } from "react-icons/md";
 import { CgWebsite } from "react-icons/cg";
 import { MyContext } from "../context/MyContext";
+import { FadeInSectionX, FadeInSectionY } from "./FadeInSection";
 
 function About() {
   const { mode } = useContext(MyContext);
   return (
     <Wrapper id="about" color={mode}>
       <Heading>What i do</Heading>
+      <FadeInSectionY>
       <History>
         {/* I am a skilled and passionate web designer with experience in creating 
         vitually appealing and user-friendly websites. I have a strong understanding of
@@ -28,8 +30,11 @@ function About() {
         impression. Let's collaborate and turn your ideas into something truly
         remarkable.
       </History>
+      </FadeInSectionY>
+      <FadeInSectionY>
       <Section>
         <Tile color={mode}>
+          <FadeInSectionX>
           <Icon>
             <SiAntdesign />
           </Icon>
@@ -42,8 +47,10 @@ function About() {
               making interactions effortless and enjoyable.
             </AppDesc>
           </InnerWrapper>
+          </FadeInSectionX>
         </Tile>
         <Tile color={mode}>
+        <FadeInSectionX>
           <Icon>
             <CgWebsite />
           </Icon>
@@ -56,8 +63,10 @@ function About() {
               also drive results.
             </AppDesc>
           </InnerWrapper>
+          </FadeInSectionX>
         </Tile>
         <Tile color={mode}>
+        <FadeInSectionX>
           <Icon>
             <MdAppRegistration />
           </Icon>
@@ -69,8 +78,10 @@ function About() {
               to ensure a seamless and enjoyable interaction for your users.
             </AppDesc>
           </InnerWrapper>
+          </FadeInSectionX>
         </Tile>
       </Section>
+      </FadeInSectionY>
     </Wrapper>
   );
 }

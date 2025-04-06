@@ -6,6 +6,7 @@ import About from "./components/About";
 import Footer from "./components/Footer";
 import { createGlobalStyle } from "styled-components";
 import { MyContext } from "./context/MyContext";
+import { FadeInSectionY } from "./components/FadeInSection";
 const LazyPortfolio = lazy(() => import("./components/Portfolio"));
 const LazyContactme = lazy(() => import("./components/Contactme"));
 
@@ -28,8 +29,12 @@ function App() {
       <Intro />
       <About />
       <Suspense fallback={<div>Loading...</div>}>
-        <LazyPortfolio />
-        <LazyContactme />
+        <FadeInSectionY>
+          <LazyPortfolio />
+        </FadeInSectionY>
+        <FadeInSectionY>
+          <LazyContactme />
+        </FadeInSectionY>
       </Suspense>
       {/* <Clients /> */}
       <Footer />

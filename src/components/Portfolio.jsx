@@ -6,20 +6,24 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { SiMarketo } from "react-icons/si";
 import { mobile, tablet } from "../responsive";
 import { MyContext } from "../context/MyContext";
+import { FadeInSectionY } from "./FadeInSection";
 
 function Portfolio() {
   const { mode } = useContext(MyContext);
   return (
     <Wrapper color={mode} id="portfolio">
       <Header>My Portfolio</Header>
+      <FadeInSectionY>
       <Desc>
         I take pride in paying attention to the smallest details and making sure
         that my work is pixel perfect. I am excited to bring my skills and
         experience to help businesses achieve their goals and create a strong
         online presence.
       </Desc>
+      </FadeInSectionY>
       <Section>
         <Tile color={mode}>
+          <FadeInSectionY>
           <TopSection>
             <Icon>
               <LiaBlogSolid />
@@ -43,8 +47,10 @@ function Portfolio() {
               GitHub Repository
             </a>
           </TileFooter>
+          </FadeInSectionY>
         </Tile>
         <Tile color={mode}>
+        <FadeInSectionY>
           <TopSection>
             <Icon>
               <AiFillBank />
@@ -74,8 +80,10 @@ function Portfolio() {
               GitHub Repository
             </a>
           </TileFooter>
+          </FadeInSectionY>
         </Tile>
         <Tile color={mode}>
+        <FadeInSectionY>
           <TopSection>
             <Icon>
               <SiMarketo />
@@ -91,8 +99,10 @@ function Portfolio() {
           <TileFooter>
             <a href="https://github.com/Bustlezach/Comark">GitHub Repository</a>
           </TileFooter>
+          </FadeInSectionY>
         </Tile>
         <Tile color={mode}>
+        <FadeInSectionY>
           <TopSection>
             <Icon>
               <FaMapMarkerAlt />
@@ -106,6 +116,7 @@ function Portfolio() {
           <TileFooter>
             <a href="https://github.com/Bustlezach/Mapty">GitHub Repository</a>
           </TileFooter>
+          </FadeInSectionY>
         </Tile>
       </Section>
       <SeeMore
