@@ -7,8 +7,10 @@ import Footer from "./components/Footer";
 import { createGlobalStyle } from "styled-components";
 import { MyContext } from "./context/MyContext";
 import { FadeInSectionY } from "./components/FadeInSection";
-const LazyPortfolio = lazy(() => import("./components/Portfolio"));
-const LazyContactme = lazy(() => import("./components/Contactme"));
+import Portfolio from "./components/Portfolio";
+import Contactme from "./components/Contactme";
+// const LazyPortfolio = lazy(() => import("./components/Portfolio"));
+// const LazyContactme = lazy(() => import("./components/Contactme"));
 
 function App() {
   const { mode } = useContext(MyContext);
@@ -28,14 +30,12 @@ function App() {
       <Mode />
       <Intro />
       <About />
-      <Suspense fallback={<div>Loading...</div>}>
-        <FadeInSectionY>
-          <LazyPortfolio />
-        </FadeInSectionY>
-        <FadeInSectionY>
-          <LazyContactme />
-        </FadeInSectionY>
-      </Suspense>
+      <FadeInSectionY>
+        <Portfolio />
+      </FadeInSectionY>
+      <FadeInSectionY>
+        <Contactme />
+      </FadeInSectionY>
       {/* <Clients /> */}
       <Footer />
     </div>
