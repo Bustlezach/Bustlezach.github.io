@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
-import MyProvider from "./context/MyProvider";
+// import "./v1/index.css";
+import App from "./v2/App";
+import MyProvider from "./v1/context/MyProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

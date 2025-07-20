@@ -1,0 +1,199 @@
+:root {
+  /* Colors */
+  --clr-white: #fff;
+  --clr-text-primary: white;
+  --clr-text-hover: #4fd1c5;
+  --clr-bg-dark: #222;
+  --clr-shadow: rgb(54, 54, 65);
+  --clr-gradient-logo: linear-gradient(135deg, yellow, orange, red);
+  --clr-gradient-hover: linear-gradient(90deg, orange, blue);
+  --clr-shimmer: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  /* Typography */
+  --fs-logo: 3rem;
+  --fs-links: 10px;
+  --fw-logo: 700;
+  --letter-spacing: 1px;
+
+  /* Spacing */
+  --pd-navbar: 0.5rem 1rem;
+  --pd-logo: 0rem 0.3rem;
+  --pd-links: 0.5rem;
+  --pd-hover-gradient: 0.1rem;
+  --mg-hamburger: 5px;
+  --mg-link: 0.05rem;
+  --gap-links: 5px;
+  --gap-links-mobile: 0.5rem;
+
+  /* Borders & Radius */
+  --radius-logo: 5px;
+  --radius-links: 10px;
+
+  /* Z-index */
+  --z-navbar: 1000;
+  --z-hover-background: -10;
+
+  /* Animations */
+  --anim-shimmer: shimmer-diagonal 2.5s infinite linear;
+  --anim-rotate: rotating linear 5s infinite;
+
+  /* Sizing */
+  --hamburger-width: 20px;
+  --hamburger-height: 2px;
+  --navbar-mobile-height: 40vh;
+  --navbar-mobile-maxwidth: 30vw;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--pd-navbar);
+  background: transparent;
+  color: var(--clr-text-primary);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-navbar);
+}
+
+/* Logo */
+.navbar-logo {
+  font-size: var(--fs-logo);
+  font-weight: var(--fw-logo);
+  padding: var(--pd-logo);
+  color: transparent;
+  background: var(--clr-gradient-logo);
+  background-clip: text;
+  box-shadow: 1px 3px 10px var(--clr-shadow);
+  border-radius: var(--radius-logo);
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-logo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150%;
+  height: 150%;
+  border-radius: 50%;
+  background: var(--clr-shimmer);
+  transform: rotate(0deg);
+  animation: var(--anim-shimmer);
+}
+
+/* Hamburger */
+.wrapper {
+  display: block;
+  visibility: hidden;
+}
+
+.hamburger {
+  height: var(--hamburger-height);
+  width: var(--hamburger-width);
+  background: var(--clr-white);
+  margin-top: var(--mg-hamburger);
+}
+
+/* Navlinks */
+.navbar-links {
+  margin: 0;
+  padding: var(--pd-hover-gradient);
+  list-style: none;
+  display: flex;
+  background: transparent;
+  box-shadow: 2px 2px 5px var(--clr-shadow);
+  border-radius: var(--radius-links);
+  gap: var(--gap-links);
+}
+
+.navbar-links li {
+  overflow: hidden;
+}
+
+.navbar-links li div {
+  transition: color 0.3s;
+  position: relative;
+  color: var(--clr-white);
+  background: var(--clr-bg-dark);
+  text-align: center;
+  font-size: var(--fs-links);
+  padding: var(--pd-links);
+  margin: var(--mg-link);
+  border-radius: var(--radius-links);
+  cursor: pointer;
+}
+
+.navbar-links span {
+  text-transform: uppercase;
+  padding-left: var(--pd-links);
+  display: inline-block;
+  letter-spacing: var(--letter-spacing);
+}
+
+.navbar-links li div:hover {
+  color: var(--clr-text-hover);
+}
+
+.navbar-links li div:hover::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 150%;
+  padding: var(--pd-hover-gradient);
+  background: var(--clr-gradient-hover);
+  border-radius: var(--radius-links);
+  top: -0.1rem;
+  left: -0.2rem;
+  transform: rotate(40deg);
+  z-index: var(--z-hover-background);
+  animation: var(--anim-rotate);
+}
+
+/* Animations */
+@keyframes shimmer-diagonal {
+  0% {
+    transform: translate(-100%, -100%) rotate(0deg);
+  }
+  100% {
+    transform: translate(100%, 100%) rotate(0deg);
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    visibility: hidden;
+    flex-direction: column;
+    align-items: start;
+    height: var(--navbar-mobile-height);
+    max-width: var(--navbar-mobile-maxwidth);
+    padding: 0.3rem 0.1rem;
+    margin: 0;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    gap: var(--gap-links-mobile);
+  }
+
+  .navbar-links li div span {
+    /* Optional styling for mobile */
+  }
+}

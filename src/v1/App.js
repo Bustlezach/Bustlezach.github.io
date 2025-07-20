@@ -1,3 +1,4 @@
+
 import React, { lazy, Suspense, useContext } from "react";
 import NavBar from "./components/NavBar";
 import Mode from "./components/Mode";

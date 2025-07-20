@@ -1,0 +1,26 @@
+.skills {
+  /* background: #edf2f7; */
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.skills-list span {
+  background-color: #2c7a7b;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .skills-list {
+    flex-direction: column;
+  }
+}
